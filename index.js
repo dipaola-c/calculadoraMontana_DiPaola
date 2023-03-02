@@ -104,9 +104,6 @@ function imprimirTabla(array) {
       `;
 
         bodyTabla.appendChild(datos);
-
-        let botonEliminar = document.getElementById(`eliminar${alfajor.id}`);
-        botonEliminar.addEventListener("click", () => eliminarDelCarrito(alfajor.id));
     }
 
     let precioTotal = obtenerPrecioTotal(array);
