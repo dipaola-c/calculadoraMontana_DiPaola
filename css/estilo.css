@@ -1,0 +1,287 @@
+@charset "UTF-8";
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box; }
+
+/* body {}
+  /*PAGINA CONTACTO*/
+  body .grilla {
+    display: grid;
+    grid-template-areas: "header header" "section1 section " "section2 section3 " "section5 section4 " "section6 section7 " "footer footer ";
+    grid-template-rows: auto 500px 500px 500px 500px auto;
+    grid-template-columns: 1fr 1fr; }
+  body #montana {
+    width: auto;
+    display: flex;
+    flex-direction: column;
+    /*column, hay mas*/
+    flex-wrap: nowrap;
+    grid-area: section;
+    text-align: center;
+    margin: 0px auto;
+    /*centra la section dentro de la grilla*/
+    margin-left: 80px;
+    margin-right: 80px;
+    margin-top: 50px; }
+  body #imagenMontana1 {
+    width: auto;
+    grid-area: section1;
+    text-align: center;
+    margin: 0px auto; }
+  body #montana2 {
+    width: auto;
+    display: flex;
+    flex-direction: column;
+    /*column, hay mas*/
+    flex-wrap: nowrap;
+    grid-area: section2;
+    text-align: center;
+    margin: 0px auto;
+    margin-left: 40px;
+    margin-right: 40px; }
+  body #imagenMontana2 {
+    width: auto;
+    grid-area: section3;
+    text-align: center;
+    margin: 0px auto; }
+  body #montana3 {
+    width: auto;
+    display: flex;
+    grid-area: section4;
+    flex-direction: column;
+    /*column, hay mas*/
+    flex-wrap: nowrap;
+    text-align: center;
+    padding-top: 80px;
+    margin: 0px auto;
+    margin-left: 80px;
+    margin-right: 80px; }
+  body #imagenMontana3 {
+    width: auto;
+    grid-area: section5;
+    text-align: center;
+    margin: 0px auto; }
+  body #montana3 {
+    width: auto;
+    display: flex;
+    grid-area: section6;
+    flex-direction: column;
+    /*column, hay mas*/
+    flex-wrap: nowrap;
+    text-align: center;
+    padding-top: 80px;
+    margin: 0px auto;
+    margin-left: 40px;
+    margin-right: 40px; }
+  body #imagenMontana4 {
+    width: auto;
+    grid-area: section7;
+    text-align: center;
+    margin: 0px auto; }
+  body .fondo {
+    /* grid-area: presentacion; */
+    width: auto;
+    height: 700px;
+    background-image: url("/js/calculadoraMontana_DiPaola/img/fondoMontana.jpg");
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 40rem;
+    max-width: 100%;
+    position: relative; }
+    body .fondo .header {
+      grid-area: header;
+      position: sticky;
+      /*no funciona, averiguar porque o como hacerlo desde una clase de bootstrap*/ }
+      body .fondo .header nav.navbar.navbar-expand-lg.navbar-light {
+        background-color: rgba(96, 99, 117, 0.705);
+        font-family: "Kaushan_Script"; }
+  body .header {
+    grid-area: header;
+    position: sticky;
+    /*no funciona, averiguar porque o como hacerlo desde una clase de bootstrap*/ }
+    body .header nav.navbar.navbar-expand-lg.navbar-light {
+      background-color: rgba(52, 58, 63, 0.705);
+      font-family: "Kaushan_Script"; }
+  body .whatsapp {
+    background-color: none;
+    position: sticky;
+    top: 160px;
+    width: 40px;
+    height: 40px; }
+  /* body main { }*/
+    /*PAGINA NOSOTROS*/
+    body main .presentacion {
+      padding: 70px;
+      background-color: rgba(84, 96, 112, 0.788); }
+      body main .presentacion p {
+        text-align: center;
+        font-size: 20px;
+        padding: 40px;
+        margin: 30px; }
+    body main .fondoMain {
+      width: auto;
+      height: 950px;
+      background-image: url("/js/calculadoraMontana_DiPaola/img/fondoRelieve.jpg");
+      background-attachment: fixed;
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: cover;
+      height: 25rem;
+      max-width: 100%;
+      position: relative; }
+      body main .fondoMain h2 {
+        text-align: center;
+        font-size: 40px;
+        padding: 30px;
+        color: #f5ecec; }
+    body main #productosTotales {
+      background-color: rgba(223, 205, 157, 0.788);
+      width: auto;
+      height: auto;
+      padding: 0.5rem;
+      display: flex;
+      /*las cajas, haganse flexibles independientemente del tamaño, para que entren en su padre contenedor*/
+      flex-direction: column;
+      /*column, hay mas*/
+      flex-wrap: nowrap;
+      /*tres opciones, nowrap, wrap y wrap diverse, por defecto es nowrap*/
+      align-items: center;
+      align-content: stretch; }
+      body main #productosTotales #panesPizzas, body main #productosTotales #budinesMuffins, body main #productosTotales #tortas {
+        width: auto;
+        height: auto;
+        padding: 0.5rem;
+        display: flex;
+        /*las cajas, haganse flexibles independientemente del tamaño, para que entren en su padre contenedor*/
+        flex-direction: row;
+        /*column, hay mas*/
+        flex-wrap: wrap;
+        /*tres opciones, nowrap, wrap y wrap diverse, por defecto es nowrap*/
+        align-items: center;
+        align-content: stretch; }
+        body main #productosTotales #panesPizzas #producto, body main #productosTotales #budinesMuffins #producto, body main #productosTotales #tortas #producto {
+          width: 300px;
+          height: 300px;
+          margin: 0.9rem; }
+          body main #productosTotales #panesPizzas #producto h2, body main #productosTotales #budinesMuffins #producto h2, body main #productosTotales #tortas #producto h2 {
+            padding: 90px;
+            text-align: center; }
+          body main #productosTotales #panesPizzas #producto img, body main #productosTotales #budinesMuffins #producto img, body main #productosTotales #tortas #producto img {
+            width: 300px;
+            height: 300px; }
+            body main #productosTotales #panesPizzas #producto img :hover, body main #productosTotales #budinesMuffins #producto img :hover, body main #productosTotales #tortas #producto img :hover {
+              transform: scale(1.1, 1.1); }
+    body main .instagram-precios {
+      width: 300px;
+      text-align: center; }
+    body main .nosotros {
+      background-color: #b8b099;
+      text-align: center;
+      padding: 30px;
+      margin: 0px; }
+      body main .nosotros h1, body main .nosotros h2, body main .nosotros p {
+        padding: 3px; }
+  body .container .text-center-header {
+    background-color: rgba(157, 202, 223, 0.788);
+    text-align: center;
+    font-size: 27px;
+    padding: 12px; }
+  body .container .form-control {
+    font-size: 15px;
+    color: #36A0FF;
+    padding: 10px;
+    width: 100%; }
+  body .container .form-group {
+    text-align: center; }
+    body .container .form-group .btn-primary {
+      text-align: center;
+      margin: 10px;
+      padding: 20px;
+      width: 40%; }
+  body aside {
+    box-sizing: content-box;
+    margin: 30px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: stretch;
+    align-content: stretch; }
+  body .caracteristica {
+    width: 300px;
+    height: auto;
+    margin: auto;
+    text-align: center;
+    padding: 30px; }
+    body .caracteristica p {
+      padding: 10px; }
+    body .caracteristica h2:hover {
+      color: rgba(50, 51, 56, 0.233);
+      border-radius: 20px;
+      transform: scale(1.1, 1.1); }
+  body .separador {
+    background-color: rgba(84, 88, 143, 0.438);
+    width: auto;
+    height: auto;
+    text-align: center;
+    padding: 10px; }
+  body .footer {
+    grid-area: footer;
+    box-sizing: border-box;
+    padding: 10px;
+    text-align: center;
+    background-color: lightgrey;
+    }
+    body .footer p {
+      text-align: center;
+      padding: 10px; }
+
+h1, h2, h3, p {
+  font-family: Arial, Helvetica, sans-serif; }
+
+/*tipografía sólo del título/logo*/
+@font-face {
+  font-family: "Kaushan_Script";
+  src: url("./Kaushan_Script/KaushanScript-Regular.ttf"); }
+
+/*vista mobile*/
+@media only screen and (min-width: 0px) and (max-width: 767px) {
+  main .presentacion {
+    padding: 40px;
+    margin: 10px; }
+    main .presentacion p {
+      text-align: center;
+      font-size: 20px;
+      padding: 30px; }
+  aside {
+    box-sizing: content-box;
+    margin: 10px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    flex-wrap: wrap; }
+  body .grilla {
+    display: grid;
+    grid-template-areas: "header" "section" "section1 " "section2 " "section3 " "section4 " "section5 " "section6 " "section7 " "footer";
+    grid-template-rows: auto auto auto auto auto auto;
+    grid-template-columns: 100%; }
+    body .grilla .textoAlimentacion {
+      width: auto;
+      display: flex;
+      flex-direction: column;
+      /*column, hay mas*/
+      flex-wrap: nowrap;
+      grid-area: section;
+      text-align: center;
+      margin: 0px;
+      /*centra la section dentro de la grilla*/ }
+    body .grilla .imagenAlimentacion img {
+      width: 100%; }
+  .caracteristica {
+    width: 300px;
+    height: auto;
+    margin: 0px;
+    text-align: center;
+    padding: 10px; } }
