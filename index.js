@@ -4,6 +4,7 @@ class Montana {
         this.dificultad = montana.dificultad; 
         this.altura = montana.altura;
         this.desnivel = montana.desnivel;
+        this.estaciones = montana.estaciones;
         this.tiempo = montana.tiempo;
         }
 
@@ -11,8 +12,12 @@ class Montana {
             this.nombre==this.nombre;
         }
 
+        quitarMontana() {
+            this.nombre==this.nombre;
+        }
+
         modificaSegunEstacion() {
-            let estaciones = prompt("Ingrese la estación del año a viajar:").toLowerCase();
+        let estaciones = prompt("Ingrese la estación del año a viajar:").toLowerCase();
 
 		if(estaciones === "primavera"){
 			this.tiempo += 5;
@@ -25,16 +30,17 @@ class Montana {
     }
   }
 
-        modificaSegunPesoMochila() {
-            this.tiempo = this.tiempo + (this.tiempo * (pesoMochila / 100));            
-        }
+        // modificaSegunPesoMochila() {
+        //     this.tiempo = this.tiempo + (this.tiempo * (pesoMochila / 100));            
+        // }
 
-        quitarPeso() {
-            this.tiempo = this.tiempo - (this.tiempo * (pesoMochila / 100));
-        }
+        // quitarPeso() {
+        //     this.tiempo = this.tiempo - (this.tiempo * (pesoMochila / 100));
+        // }
  }
 
 
+ //Funciones del html
  function imprimirMontanasHTML(array) {
     let contenedor = document.getElementById("contenedor");
     contenedor.innerHTML = "";
@@ -45,24 +51,40 @@ class Montana {
         //contenido de card
         card.innerHTML = `
 
-        <section class="imagenMontana" id="imagenMontana1">
-            <img src="${montana.img}" height="500px" width="500px" alt="" />
-        </section>
+        <div class="montanaCuadro" style="width: 20rem;">
+        <div class="montanaBody">
+            <img src="${montana.img}" class="montanaImg" alt="">
+            <h3>${montana.nombre}</h2>
+            <h5>${montana.dificultad}</h5>
+            <p>$${montana.tiempo}</p>
 
-        <section class= "textoMontana" id="montana">
-        <h1>${montana.nombre}</h1>
-        <h2>${montana.dificultad}</h2>
-        <button id="comparar${montana.nombre}${montana.dificultad}" type="button"> Comparar </button>
-        <p></p>
-        </section>` ;
+            <div class="btn-comparar">
+                <button id="comparar${montana.nombre}${montana.nombre}" type="button" class="btn btn-dark"> Comparar </button>
+            </div>
+        </div>
+    </div>      ` ;
 
 
         contenedor.appendChild(card);
 
-        let boton = document.getElementById(`agregar${montana.nombre}${montana.dificultad}`);
+        let boton = document.getElementById(`comparar${montana.nombre}${montana.dificultad}`);
         boton.addEventListener("click", () => compararMontanasIngresadas(montana));
     }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -122,32 +144,36 @@ const montanas = [
         dificultad: "Media",
         altura: 1730,
         desnivel: 800,
+        estaciones: 0,
         tiempo: 5,
-        img: "/js/calculadoraMontana_DiPaola/img/galeria/lagunaNegra.jpg",
+        img: "calculadoraMontana_DiPaola/img/galeria/lagunaNegra.jpg",
     },
     {
         nombre: "Cerro Catedral",
         dificultad: "Alta",
         altura: 2000,
         desnivel: 1050,
+        estaciones: 0,
         tiempo: 8,
-        img: "/js/calculadoraMontana_DiPaola/img/galeria/cerroCatedral.jpg",
+        img: "calculadoraMontana_DiPaola/img/galeria/cerroCatedral.jpg",
     },
     {
         nombre: "Cerro Tronador",
         dificultad: "Media",
         altura: 2000,
         desnivel: 1050,
+        estaciones: 0,
         tiempo: 8,
-        img: "/js/calculadoraMontana_DiPaola/img/galeria/cerroTronador.jpg",
+        img: "calculadoraMontana_DiPaola/img/galeria/cerroTronador.jpg",
     },
     {
         nombre: "Laguna Jakob",
         dificultad: "Media",
         altura: 1600,
         desnivel: 850,
+        estaciones: 0,
         tiempo: 7.5,
-        img: "/js/calculadoraMontana_DiPaola/img/galeria/lagunaJakob.jpg",
+        img: "calculadoraMontana_DiPaola/img/galeria/lagunaJakob.jpg",
     },
     {
         nombre: "Cerro Piltriquitron",
@@ -155,7 +181,8 @@ const montanas = [
         altura: 1700,
         desnivel: 950,
         tiempo: 6.5,
-        img: "/js/calculadoraMontana_DiPaola/img/galeria/cerroPiltriquitron.jpg",
+        estaciones: 0,
+        img: "calculadoraMontana_DiPaola/img/galeria/cerroPiltriquitron.jpg",
     },
 ];
 
