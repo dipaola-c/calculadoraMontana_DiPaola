@@ -8,7 +8,8 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
     <link rel="stylesheet" href="/js/calculadoraMontana_DiPaola/css/estilo.css">
     <link rel="shortcut icon" href="/js/calculadoraMontana_DiPaola/img/favicon.png">
-</head>
+    <script src="/js/calculadoraMontana_DiPaola/index.js"></script>
+  </head>
 
 
 
@@ -55,12 +56,69 @@
 
 
      
-    <main>
+    <main class="infoUtilPadre">
        
-        <section class="nosotros">
+        <section class="infoUtil" id="infoUtilCuadro">
+          <div id="boxes">
+            <div class="box one">
+              <h3>Cálculo aproximado (distancia / 4) + ((desnivel / 300) / 2)</h3>
+            </div>
             
         
+            <svg width="70" height="80">
             
+                <path class="path" d="
+                          M 18 3
+                          L 46 3
+                          L 46 40
+                          L 61 40
+                          L 32 68
+                          L 3 40
+                          L 18 40
+                          Z
+                        "></path>
+                  
+              </svg>
+        
+            <div class="box two">
+              <h3>+ 20% con clima lluvioso y/o + 15% con paradas incluidas</h3>
+            </div>
+            
+            
+            <svg width="70" height="80">
+            
+              <path class="path" d="
+              M 18 3
+              L 46 3
+              L 46 40
+              L 61 40
+              L 32 68
+              L 3 40
+              L 18 40
+              Z
+            "></path>
+                  
+              </svg>
+                
+            <div class="box three">
+              <h3>Tiempo total del recorrido aproximado solo de subida</h3>
+            </div>
+            
+      
+          </div> 
+        </section>
+
+        <section class="infoUtil" id="infoUtilTexto">
+          <p>Estudiar el mapa y conocer los detalles y características del camino, te permitirán planificar correctamente la actividad en cuanto al tiempo, los elementos necesarios y los lugares de descanso.</p>
+
+          <p>Por eso es importante contar con un mapa que nos permita visualizar puntos del sendero importantes y además posibles riesgos del camino.</p>
+          
+          <p>Además de poder estipular la duración del viaje, es importante calcular el horario de ida y el horario de vuelta, contemplando el cansancio y la poca visibilidad por la noche.</p>
+          
+          <p>Se estima que la velocidad en horizontal es de 4km/h de un peatón en la llanura, pero esto se ve modificado por diversos factores como el desnivel, la cantidad de peso de tu mochila, la cantidad de paradas que hagas en el recorrido, tu estado físico y si el ritmo es individual o grupal.</p>
+          
+          <p>Nuestra calculadora de montaña te permitirá estipular un tiempo del recorrido teniendo en cuenta <strong> el recorrido en horizontal, la altitud y el desnivel,</strong> así como también comparar diferentes recorridos.</p>
+        
         </section>
 
     </main>
@@ -70,5 +128,6 @@
   </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
-</body>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.js"></script>
+    <script src="/js/calculadoraMontana_DiPaola/anime.min.js"></script></body>
 </html>

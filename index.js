@@ -106,12 +106,12 @@ function imprimirTabla(array) {
         bodyTabla.appendChild(datos);
     }
 
-    let precioTotal = obtenerPrecioTotal(array);
-    let accionesCarrito = document.getElementById("acciones-carrito");
-    accionesCarrito.innerHTML = `
-		<h5>PrecioTotal: $${precioTotal}</h5></br>
-		<button id="vaciarCarrito" onclick="eliminarCarrito()" class="btn btn-dark">Vaciar Carrito</button>
-	`;
+    // let precioTotal = obtenerPrecioTotal(array);
+    // let accionesCarrito = document.getElementById("acciones-carrito");
+    // accionesCarrito.innerHTML = `
+	// 	<h5>PrecioTotal: $${precioTotal}</h5></br>
+	// 	<button id="vaciarCarrito" onclick="eliminarCarrito()" class="btn btn-dark">Vaciar Carrito</button>
+	// `;
 }
 
 
