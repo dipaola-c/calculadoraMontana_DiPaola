@@ -47,19 +47,10 @@ const montanas = [
     },
 ];
 
-function imprimirMontanasHtml(array){
-
-
-    let contenedor = document.getElementById("contenedor");
-    contenedor.innerHTML = "";
-
-
-    for (const montana of montanas) {
-
-        let tarjeta = document.createElement("div");
-
-
-    tarjeta.innerHTML = `
+for (const montana of montanas) {
+    let contenedor = document.createElement("div");
+    //Definimos el innerHTML del elemento con una plantilla de texto
+    contenedor.innerHTML = `
 
     <div class="montanaCuadro" style="width: 50%">
     <div class="montanaBody">
@@ -73,8 +64,5 @@ function imprimirMontanasHtml(array){
         </div>
     </div>
 </div>      `;
-    contenedor.appendChild(tarjeta);
+    document.body.appendChild(contenedor);
 }
-}
-
-imprimirMontanasHtml(montanas);

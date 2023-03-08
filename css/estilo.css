@@ -72,6 +72,9 @@
     grid-template-areas: "header header" "section1 section " "section2 section3 " "section5 section4 " "section6 section7 " "footer footer ";
     grid-template-rows: auto 500px 500px 500px 500px auto;
     grid-template-columns: 1fr 1fr; } */
+  #montanaCuadro {
+    width: 18rem;
+  }
   body #montana {
     width: auto;
     display: flex;
