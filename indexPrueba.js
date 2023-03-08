@@ -61,7 +61,7 @@ function imprimirMontanasHtml(array){
 
     tarjeta.innerHTML = `
 
-    <div class="montanaCuadro" style="width: 50%">
+    <div class="montanaCuadro">
     <div class="montanaBody">
         <img src="${montana.img}" class="montanaImg" alt="">
         <h3>${montana.nombre}</h2>
@@ -77,4 +77,6 @@ function imprimirMontanasHtml(array){
 }
 }
 
-imprimirMontanasHtml(montanas);
+
+//ejecuto funciones
+imprimirMontanasHtml(montanas); //imprime las tarjetas de las montañas en el html
