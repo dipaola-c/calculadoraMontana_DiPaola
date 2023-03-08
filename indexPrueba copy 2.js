@@ -116,29 +116,29 @@ function imprimirMontanasHtml(montanas){
     contenedor.appendChild(tarjeta);
 
     let boton = document.getElementById(`agregarPeso${montana.nombre}${montana.dificultad}`);
-    boton.addEventListener("click", () => imprimirTabla(montanas));
+    boton.addEventListener("click", () => agregarPeso(montana));
 }
 }
 
 
 
 
-// function agregarPeso(montana) {
-//     let index = comparar.findIndex((elemento) => elemento.id === montana.nombre);
-//     console.log({ index });
+function agregarPeso(montana) {
+    let index = comparar.findIndex((elemento) => elemento.id === montana.nombre);
+    console.log({ index });
 
-//     if (index != -1) {
-//         comparar[index].agregarPeso2kg();
-//         // comparar[index].actualizarTiempo();
-//     } else{
-//         let montana = new Montana(montana);
-//         montana.nombre = montana.nombre;
-//         comparar.push(montana);
-//     }
+    if (index != -1) {
+        comparar[index].agregarPeso2kg();
+        // comparar[index].actualizarTiempo();
+    } else{
+        let montana = new Montana(montana);
+        montana.nombre = montana.nombre;
+        comparar.push(montana);
+    }
 
-//     localStorage.setItem("montanasEnStorage", JSON.stringify(comparar));
-//     imprimirTabla(comparar);
-// }
+    localStorage.setItem("montanasEnStorage", JSON.stringify(comparar));
+    imprimirTabla(comparar);
+}
 
 
 
@@ -149,14 +149,14 @@ function imprimirMontanasHtml(montanas){
 
 
 //Tabla de comparación
-function imprimirTabla(montanas) {
+function imprimirTabla(array) {
     let contenedor = document.getElementById("tablaComparacion");
     contenedor.innerHTML = "";
 
     let tabla = document.createElement("div");
 
     tabla.innerHTML = `
-        <table id="tablaComparacion" style= "width: 100%">
+        <table id="tablaComparacion">
             <thead>         
                 <tr>
                     <th>Nombre</th>
@@ -178,14 +178,14 @@ function imprimirTabla(montanas) {
 
     let bodyTabla = document.getElementById("bodyTabla");
 
-    for (let montana of montanas) {
+    for (let montana of array) {
         let datos = document.createElement("tr");
         datos.innerHTML = `
                 <td>${montana.nombre}</td>
                 <td>${montana.dificultad}</td>
-                <td>${montana.altura}mts</td>
-                <td>${montana.desnivel}mts</td>
-                <td>${montana.tiempo}hs</td>
+                <td>${montana.altura}</td>
+                <td>$${montana.desnivel}</td>
+                <td>$${montana.tiempo}</td>
                 <td><button id="eliminar${montana.nombre}" class="btn btn-dark">Eliminar</button></td>
       `;
 
@@ -198,6 +198,34 @@ function imprimirTabla(montanas) {
 
 
 
+function montanasEnStorage() {
+    let contenidoEnStorage = JSON.parse(localStorage.getItem("montanasEnStorage"));
+
+    
+    if (contenidoEnStorage) {
+        
+        let array = [];
+
+        for (const objeto of contenidoEnStorage) {
+            
+            let montana = new Montana(objeto);
+            montana.agregarPeso();
+            array.push(montana);
+        }
+
+        imprimirTabla(array);
+
+        return array;
+    }
+
+    return [];
+}
+
+
+
+
+
 
 //ejecuto funciones
 imprimirMontanasHtml(montanas); //imprime las tarjetas de las montañas en el html
+let comparar = montanasEnStorage();
