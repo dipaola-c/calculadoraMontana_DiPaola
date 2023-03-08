@@ -144,7 +144,7 @@
     /* grid-area: presentacion; */
     width: auto;
     height: 700px;
-    background-image: url("/js/calculadoraMontana_DiPaola/img/fondoMontana.jpg");
+    background-image: url("/calculadoraMontana_DiPaola/img/fondoMontana.jpg");
     background-attachment: fixed;
     background-position: center;
     background-repeat: no-repeat;
@@ -176,7 +176,7 @@
     body main .fondoMain {
       width: auto;
       height: 950px;
-      background-image: url("/js/calculadoraMontana_DiPaola/img/fondoRelieve.jpg");
+      background-image: url("/calculadoraMontana_DiPaola/img/fondoRelieve.jpg");
       background-attachment: fixed;
       background-position: center;
       background-repeat: no-repeat;
