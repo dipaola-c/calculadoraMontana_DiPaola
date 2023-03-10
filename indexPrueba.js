@@ -43,7 +43,6 @@ const montanas = [
         estaciones: "",
         tiempo: 5,
         img: "/calculadoraMontana_DiPaola/img/galerias/lagunaNegra.jpg",
-
     },
     {
         nombre: "Cerro Catedral",
@@ -99,6 +98,7 @@ function imprimirMontanasHtml(montanas){
     <div class="montanaCuadro">
     <div class="montanaBody">
         <img src="${montana.img}" class="montanaImg" alt="">
+        <figcaption>${montana.elementos}</figcaption>
         <h3>${montana.nombre}</h2>
         <h5>Dificultad ${montana.dificultad}</h5>
         <h6>${montana.altura}mts de altura</h6>
@@ -106,16 +106,17 @@ function imprimirMontanasHtml(montanas){
         <p>${montana.tiempo}hs de subida</p>
 
         <div class="btn-comparar">
-            <button id="agregarPeso${montana.nombre}" type="button" class="btn btn-dark"> Agregar +2kg de peso </button>
+            <button id="agregarPeso${montana.nombre}" type="button" class="btn btn-secondary"> Agregar +2kg de peso </button>
         </div>
     </div>
 </div>      `;
-    contenedor.appendChild(tarjeta);
+    contenedor.appendChild(tarjeta);  //agrego las tarjetas al final del div contenedor
 
     let boton = document.getElementById(`agregarPeso${montana.nombre}`);
     boton.addEventListener("click", () => imprimirTabla(montanas))
     boton.addEventListener("click", () =>
     agregarPeso2kg());
+
 }
 }
 
@@ -147,7 +148,7 @@ function imprimirMontanasHtml(montanas){
 
 
 
-//Tabla de comparación
+//TABLA DE COMPARACIÓN DE CERROS
 function imprimirTabla(montanas) {
     let contenedor = document.getElementById("tablaComparacion");
     contenedor.innerHTML = "";
@@ -198,5 +199,5 @@ function imprimirTabla(montanas) {
 
 
 
-//ejecuto funciones
+//EJECUTO LAS FUNCIONES
 imprimirMontanasHtml(montanas); //imprime las tarjetas de las montañas en el html
