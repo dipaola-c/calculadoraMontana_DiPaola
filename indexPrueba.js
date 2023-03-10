@@ -43,6 +43,16 @@ const montanas = [
         estaciones: "",
         tiempo: 5,
         img: "/calculadoraMontana_DiPaola/img/galerias/lagunaNegra.jpg",
+        elemento1: "Mochila cómoda con varillas interiores",
+        elemento2: "Bolsa de dormir o similar + aislante",
+        elemento3: "Carpa de montaña con varillas de aluminio",
+        elemento4: "Traje de baño en verano",
+        elemento5: "Ropa de abrigo para la cumbre",
+        elemento6: "Zapatillas de trekking",
+        elemento7: "Comida para 2 días y 1 noche",
+        elemento8: "2 litros de agua",
+        elemento9: "Protección solar",
+        elemento10: "GPS, radio, mapa y botiquín",
     },
     {
         nombre: "Cerro Catedral",
@@ -52,6 +62,16 @@ const montanas = [
         estaciones: "",
         tiempo: 8,
         img: "/calculadoraMontana_DiPaola/img/galerias/cerroCatedral.jpg",
+        elemento1: "Mochila cómoda con varillas interiores",
+        elemento2: "Bolsa de dormir o similar + aislante",
+        elemento3: "Carpa de montaña con varillas de aluminio",
+        elemento4: "Grampones y piqueta",
+        elemento5: "Ropa de abrigo y nieve para la cumbre",
+        elemento6: "Zapatillas de trekking",
+        elemento7: "Comida para 2 días y 1 noche",
+        elemento8: "2 litros de agua",
+        elemento9: "Protección solar",
+        elemento10: "GPS, radio, mapa y botiquín",
     },
     {
         nombre: "Cerro Tronador",
@@ -61,6 +81,16 @@ const montanas = [
         estaciones: "",
         tiempo: 8,
         img: "/calculadoraMontana_DiPaola/img/galerias/cerroTronador.jpeg",
+        elemento1: "Mochila cómoda con varillas interiores",
+        elemento2: "Bolsa de dormir o similar + aislante",
+        elemento3: "Carpa de montaña con varillas de aluminio",
+        elemento4: "Sogas (por el terreno de este cerro no pueden clavarse estacas)",
+        elemento5: "Ropa de abrigo y nieve para la cumbre",
+        elemento6: "Zapatillas de trekking",
+        elemento7: "Comida para 2 días y 1 noche",
+        elemento8: "1 litro de agua (hay agua en todo el recorrido)",
+        elemento9: "Protección solar",
+        elemento10: "GPS, radio, mapa y botiquín",
     },
     {
         nombre: "Laguna Jakob",
@@ -70,6 +100,16 @@ const montanas = [
         estaciones: "",
         tiempo: 7.5,
         img: "/calculadoraMontana_DiPaola/img/galerias/lagunaJakob.jpeg",
+        elemento1: "Mochila cómoda con varillas interiores",
+        elemento2: "Bolsa de dormir o similar + aislante",
+        elemento3: "Carpa de montaña con varillas de aluminio",
+        elemento4: "Sogas aptas para colgarse en piedras",
+        elemento5: "Ropa de abrigo y nieve para la cumbre",
+        elemento6: "2 pares de zapatillas de trekking",
+        elemento7: "Comida para 3 días y 2 noches",
+        elemento8: "1 litro de agua (hay agua en todo el recorrido)",
+        elemento9: "Protección solar",
+        elemento10: "GPS, radio, mapa y botiquín",
     },
     {
         nombre: "Cerro Piltriquitron",
@@ -79,6 +119,16 @@ const montanas = [
         tiempo: 6.5,
         estaciones: "",
         img: "/calculadoraMontana_DiPaola/img/galerias/cerroPiltriquitron.jpg",
+        elemento1: "Mochila cómoda con varillas interiores",
+        elemento2: "Bolsa de dormir o similar + aislante",
+        elemento3: "Carpa de montaña con varillas de aluminio",
+        elemento4: "Cubretecho extra para la carpa (zona muy lluviosa)",
+        elemento5: "Ropa de abrigo y nieve para la cumbre",
+        elemento6: "Zapatillas de trekking",
+        elemento7: "Comida para 2 días y 1 noche",
+        elemento8: "2 litros de agua",
+        elemento9: "Protección solar",
+        elemento10: "GPS, radio, mapa y botiquín",
     },
 ];
 
@@ -98,7 +148,17 @@ function imprimirMontanasHtml(montanas){
     <div class="montanaCuadro">
     <div class="montanaBody">
         <img src="${montana.img}" class="montanaImg" alt="">
-        <figcaption>${montana.elementos}</figcaption>
+        <figcaption>
+        <li>${montana.elemento1}</li>
+        <li>${montana.elemento2}</li>
+        <li>${montana.elemento3}</li>
+        <li>${montana.elemento4}</li>
+        <li>${montana.elemento5}</li>
+        <li>${montana.elemento6}</li>
+        <li>${montana.elemento7}</li>
+        <li>${montana.elemento8}</li>
+        <li>${montana.elemento9}</li>
+        <li>${montana.elemento10}</li></figcaption>
         <h3>${montana.nombre}</h2>
         <h5>Dificultad ${montana.dificultad}</h5>
         <h6>${montana.altura}mts de altura</h6>
