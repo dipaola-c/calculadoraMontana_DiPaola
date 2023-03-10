@@ -1,4 +1,4 @@
-//constructor de montañas
+//CONSTRUCTOR DE MONTAÑAS
 class Montana {
     constructor (montana) {
         this.nombre = montana.nombre;
@@ -9,24 +9,23 @@ class Montana {
         this.tiempo = montana.tiempo;
         }
 
-        agregarPeso2kg() {
-            this.tiempo+= 1;
+        agregarPeso2kg() { //agrega 12 minutos cada 2kg de peso
+            this.tiempo+= 0.2;
         }
 
-        quitarPeso2kg() {
-            this.tiempo-= 1;
+        quitarPeso2kg() { //quita 12 minutos cada 12 kg de peso
+            this.tiempo-= 0.2;
         }
 
         modificaSegunEstacion() {
-        // let estaciones = prompt("Ingrese la estación del año a viajar:").toLowerCase();
 		if(estaciones === "primavera"){
-			this.tiempo += 5;
-		} else if(estaciones === "verano") {
 			this.tiempo += 0;
+		} else if(estaciones === "verano") {
+			this.tiempo += 1;
 		} else if(estaciones === "otono") {
-			this.tiempo += 25;
+			this.tiempo += 2;
 		} else if(estaciones === "invierno") {
-			this.tiempo += 50;
+			this.tiempo += 3;
     }
   }
  }
@@ -34,14 +33,14 @@ class Montana {
 
 
 
-//array de montañas
+//ARRAY DE MONTAÑAS
 const montanas = [
     {
         nombre: "Laguna Negra",
         dificultad: "Media",
         altura: 1730,
         desnivel: 800,
-        estaciones: 0,
+        estaciones: "",
         tiempo: 5,
         img: "/calculadoraMontana_DiPaola/img/galerias/lagunaNegra.jpg",
 
@@ -51,7 +50,7 @@ const montanas = [
         dificultad: "Alta",
         altura: 2000,
         desnivel: 1050,
-        estaciones: 0,
+        estaciones: "",
         tiempo: 8,
         img: "/calculadoraMontana_DiPaola/img/galerias/cerroCatedral.jpg",
     },
@@ -60,7 +59,7 @@ const montanas = [
         dificultad: "Media",
         altura: 2000,
         desnivel: 1050,
-        estaciones: 0,
+        estaciones: "",
         tiempo: 8,
         img: "/calculadoraMontana_DiPaola/img/galerias/cerroTronador.jpeg",
     },
@@ -69,7 +68,7 @@ const montanas = [
         dificultad: "Media",
         altura: 1600,
         desnivel: 850,
-        estaciones: 0,
+        estaciones: "",
         tiempo: 7.5,
         img: "/calculadoraMontana_DiPaola/img/galerias/lagunaJakob.jpeg",
     },
@@ -79,23 +78,21 @@ const montanas = [
         altura: 1700,
         desnivel: 950,
         tiempo: 6.5,
-        estaciones: 0,
+        estaciones: "",
         img: "/calculadoraMontana_DiPaola/img/galerias/cerroPiltriquitron.jpg",
     },
 ];
 
 
 
-//declaración de imprimir las tarjetas de las montañas en el html
+//IMPRIMO OPCIONES DE CERROS EN EL HTML EN EL CONTENEDOR
 function imprimirMontanasHtml(montanas){
     let contenedor = document.getElementById("contenedor");
     contenedor.innerHTML = "";
 
-
+    //CREO UNA TARJETA POR CADA CERRO DEL ARRAY
     for (const montana of montanas) {
-
         let tarjeta = document.createElement("div");
-
 
     tarjeta.innerHTML = `
 
@@ -109,14 +106,16 @@ function imprimirMontanasHtml(montanas){
         <p>${montana.tiempo}hs de subida</p>
 
         <div class="btn-comparar">
-            <button id="agregarPeso${montana.nombre}${montana.dificultad}" type="button" class="btn btn-dark"> Agregar +2kg de peso </button>
+            <button id="agregarPeso${montana.nombre}" type="button" class="btn btn-dark"> Agregar +2kg de peso </button>
         </div>
     </div>
 </div>      `;
     contenedor.appendChild(tarjeta);
 
-    let boton = document.getElementById(`agregarPeso${montana.nombre}${montana.dificultad}`);
-    boton.addEventListener("click", () => imprimirTabla(montanas));
+    let boton = document.getElementById(`agregarPeso${montana.nombre}`);
+    boton.addEventListener("click", () => imprimirTabla(montanas))
+    boton.addEventListener("click", () =>
+    agregarPeso2kg());
 }
 }
 

@@ -16,7 +16,6 @@
     text-align: center;
     vertical-align: middle;
   }
-  
   .box{
     width:100%;
     height: 70px;
@@ -28,13 +27,11 @@
     text-align: center;
     vertical-align: middle;
   }
-
   .box h3 {
     width: 100%;
     text-align: center;
     vertical-align: middle;
   }
-  
   svg {
       stroke: #000;
       stroke-width: 2;
@@ -43,14 +40,13 @@
       fill: none;
       text-align: center;
     }
-  
     .path {
       text-align: center;
       stroke-dasharray: 1000;
       stroke-dashoffset: 1000;
       animation: dash 5s linear forwards;
     }
-    
+  /*animación flechas*/
     @keyframes dash {
       from {
           stroke-dashoffset: 1000;
@@ -59,25 +55,20 @@
         stroke-dashoffset: 0;
       }
     }
-
   #infoUtilCuadro {
     width: 50%;
   }
-    
   #infoUtilTexto {
     width: 50%;
   }
 
 
-/* body {}
 /*GRILLA CALCULADORA*/
   /* body .grilla { 
     display: grid;
     grid-template-areas: "header header" "section1 section " "section2 section3 " "section5 section4 " "section6 section7 " "footer footer ";
     grid-template-rows: auto 500px 500px 500px 500px auto;
     grid-template-columns: 1fr 1fr; } */
-
-
 
     
   /*PAGINA CALCULADORA*/
@@ -98,15 +89,17 @@
     background-clip: border-box;
     border: 1px solid rgba(0,0,0,.125);
     border-radius: 0.25rem;
+    margin: 20px;
+    height: 600px;
     }
     .montanaBody {
       flex: 1 1 auto;
-    padding: 1rem 1rem;
+      padding: 1rem 1rem;
     }
    .montanaImg{
     object-fit: cover;
     width:100%;
-    height:100%;
+    height:60%;
     }
   /* body #montana {
     width: auto;
@@ -176,7 +169,11 @@
     grid-area: section7;
     text-align: center;
     margin: 0px auto; }*/
-  body .fondo {
+  
+
+  
+  /*PAGINA INDEX*/
+    body .fondo {
     /* grid-area: presentacion; */
     width: auto;
     height: 700px;
@@ -225,6 +222,7 @@
         font-size: 40px;
         padding: 30px;
         color: #f5ecec; }
+    /*PAGINA INFO UTIL*/
     body main .infoUtil {
       background-color: #b8b099;
       text-align: center;
@@ -289,21 +287,21 @@
 h1, h2, h3, p {
   font-family: Arial, Helvetica, sans-serif; }
 
-/*tipografía sólo del título/logo*/
+/*tipografía sólo del título y logo*/
 @font-face {
   font-family: "Kaushan_Script";
   src: url("./Kaushan_Script/KaushanScript-Regular.ttf"); }
+
+
 
 /*vista mobile*/
 @media only screen and (min-width: 0px) and (max-width: 767px) {
  .infoUtilPadre{
     display: inline-block;
   }
-
   #infoUtilCuadro {
     width: 100%;
   }
-    
   #infoUtilTexto {
     width: 100%;
   }
@@ -321,7 +319,9 @@ h1, h2, h3, p {
     flex-direction: row;
     justify-content: space-around;
     flex-wrap: wrap; }
-  body .grilla { /*grilla calculadora*/
+
+  /*GRILLA CALCULADORA*/
+  /* body .grilla { 
     display: grid;
     grid-template-areas: "header" "section" "section1 " "section2 " "section3 " "section4 " "section5 " "section6 " "section7 " "footer";
     grid-template-rows: auto auto auto auto auto auto;
@@ -330,12 +330,12 @@ h1, h2, h3, p {
       width: auto;
       display: flex;
       flex-direction: column;
-      /*column, hay mas*/
       flex-wrap: nowrap;
       grid-area: section;
       text-align: center;
       margin: 0px;
-      /*centra la section dentro de la grilla*/ }
+     } */
+
   .caracteristica {
     width: 300px;
     height: auto;
