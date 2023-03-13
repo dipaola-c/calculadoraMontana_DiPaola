@@ -96,6 +96,12 @@
       flex: 1 1 auto;
       padding: 1rem 1rem;
     }
+    .montanaBody h3 {
+      padding: 0.5rem 0.5rem;
+    }
+    .montanaBody p {
+      margin-bottom: 0.1rem;
+    }
     .montanaCuadro .montanaBody:hover figcaption {
       display: block;
     }
@@ -115,9 +121,9 @@
       background: rgba(175, 173, 173, 0.9);
       text-align: center;
       padding: 15px;
-      font-size: 14px;
+      font-size: 12.74px;
       color: white;
-      height:59%;
+      height:50%;
     }
     
     .btn-secondary {
