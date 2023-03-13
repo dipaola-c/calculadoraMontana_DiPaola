@@ -165,17 +165,38 @@ function imprimirMontanasHtml(montanas){
         <h6>${montana.desnivel}mts de desnivel</h6>
         <p>${montana.tiempo}hs de subida</p>
 
-        <div class="btn-comparar">
-            <button id="agregarPeso${montana.nombre}" type="button" class="btn btn-secondary"> Agregar +2kg de peso </button>
+        <div style="display: flex" style="padding: 2px">
+            <button id="agregarPeso${montana.nombre}" type="button" class="btn btn-secondary btn-sm" style="margin: 2px"> Agregar 2kg de peso </button>
+            <button id="quitarPeso${montana.nombre}" type="button" class="btn btn-secondary btn-sm" style="margin: 2px"> Quitar 2kg de peso </button>
         </div>
+
+        <div class="btn-group btn-group-toggle" data-toggle="buttons" style="padding: 2px">
+            <label class="btn btn-secondary active">
+            <input type="radio" name="options" id="otono" autocomplete="off" checked> Otoño
+            </label>
+            <label class="btn btn-secondary">
+            <input type="radio" name="options" id="invierno" autocomplete="off"> Invierno
+            </label>
+            <label class="btn btn-secondary">
+            <input type="radio" name="options" id="primavera" autocomplete="off"> Primavera
+            </label>
+            <label class="btn btn-secondary">
+            <input type="radio" name="options" id="verano" autocomplete="off"> Verano
+            </label>
+        </div>
+
+        <div class="btn-comparar">
+            <button id="comparar${montana.nombre}" type="button" class="btn btn-success"> Comparar </button>
+        </div>
+
     </div>
 </div>      `;
     contenedor.appendChild(tarjeta);  //agrego las tarjetas al final del div contenedor
 
-    let boton = document.getElementById(`agregarPeso${montana.nombre}`);
+    let boton = document.getElementById(`comparar${montana.nombre}`);
     boton.addEventListener("click", () => imprimirTabla(montanas))
     boton.addEventListener("click", () =>
-    agregarPeso2kg());
+    comparar());
 
 }
 }
@@ -246,7 +267,7 @@ function imprimirTabla(montanas) {
                 <td>${montana.altura}mts</td>
                 <td>${montana.desnivel}mts</td>
                 <td>${montana.tiempo}hs</td>
-                <td><button id="eliminar${montana.nombre}" class="btn btn-dark">Eliminar</button></td>
+                <td><button id="eliminar${montana.nombre}" class="btn btn-secondary">Eliminar</button></td>
       `;
 
         bodyTabla.appendChild(datos);
