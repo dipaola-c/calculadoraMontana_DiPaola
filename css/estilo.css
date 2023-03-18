@@ -353,6 +353,7 @@ h1, h2, h3, p {
     justify-content: space-around;
     flex-wrap: wrap; }
 
+
   /*GRILLA CALCULADORA*/
   /* body .grilla { 
     display: grid;
@@ -374,4 +375,9 @@ h1, h2, h3, p {
     height: auto;
     margin: 0px;
     text-align: center;
-    padding: 10px; } }
+    padding: 10px; } 
+  
+    #tablaComparacion {
+      font-size: 80%;
+    }
+  }

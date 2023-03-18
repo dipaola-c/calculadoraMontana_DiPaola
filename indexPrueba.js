@@ -6,15 +6,21 @@ class Montana {
         this.altura = montana.altura;
         this.desnivel = montana.desnivel;
         this.estaciones = montana.estaciones;
+        this.peso = montana.peso;
         this.tiempo = montana.tiempo;
+        this.tiempoTotal = montana.tiempo;
+        }
+        
+        agregarPeso() {
+            this.peso++;
         }
 
-        agregarPeso2kg() { //agrega 12 minutos cada 2kg de peso
-            this.tiempo+= 0.2;
+        quitarPeso() { 
+            this.peso--;
         }
 
-        quitarPeso2kg() { //quita 12 minutos cada 12 kg de peso
-            this.tiempo-= 0.2;
+        modificaSegunPeso () {//actualiza el tiempo agregando/quitando 12 minutos cada kg de peso
+            this.tiempoTotal = this.tiempo + (0.12 * this.peso)
         }
 
         modificaSegunEstacion() {
@@ -41,6 +47,7 @@ const montanas = [
         altura: 1730,
         desnivel: 800,
         estaciones: "",
+        peso: 0,
         tiempo: 5,
         img: "/calculadoraMontana_DiPaola/img/galerias/lagunaNegra.jpg",
         elemento1: "Mochila cómoda con varillas interiores",
@@ -60,6 +67,7 @@ const montanas = [
         altura: 2000,
         desnivel: 1050,
         estaciones: "",
+        peso: 0,
         tiempo: 8,
         img: "/calculadoraMontana_DiPaola/img/galerias/cerroCatedral.jpg",
         elemento1: "Mochila cómoda con varillas interiores",
@@ -79,6 +87,7 @@ const montanas = [
         altura: 2000,
         desnivel: 1050,
         estaciones: "",
+        peso: 0,
         tiempo: 8,
         img: "/calculadoraMontana_DiPaola/img/galerias/cerroTronador.jpeg",
         elemento1: "Mochila cómoda con varillas interiores",
@@ -98,6 +107,7 @@ const montanas = [
         altura: 1600,
         desnivel: 850,
         estaciones: "",
+        peso: 0,
         tiempo: 7.5,
         img: "/calculadoraMontana_DiPaola/img/galerias/lagunaJakob.jpeg",
         elemento1: "Mochila cómoda con varillas interiores",
@@ -118,6 +128,7 @@ const montanas = [
         desnivel: 950,
         tiempo: 6.5,
         estaciones: "",
+        peso: 0,
         img: "/calculadoraMontana_DiPaola/img/galerias/cerroPiltriquitron.jpg",
         elemento1: "Mochila cómoda con varillas interiores",
         elemento2: "Bolsa de dormir o similar + aislante",
@@ -194,9 +205,9 @@ function imprimirMontanasHtml(montanas){
     contenedor.appendChild(tarjeta);  //agrego las tarjetas al final del div contenedor
 
     let boton = document.getElementById(`comparar${montana.nombre}`);
-    boton.addEventListener("click", () => imprimirTabla(montanas))
-    boton.addEventListener("click", () =>
-    comparar());
+    boton.addEventListener("click", () => imprimirTabla(montanas));
+    // boton.addEventListener("click", () =>
+    // comparar());
 
 }
 }
@@ -229,6 +240,34 @@ function imprimirMontanasHtml(montanas){
 
 
 
+function agregarPeso2kg(){
+
+    for (let montana of montanas) {
+    
+    let agregarPeso = document.getElementById(`"agregarPeso${montana.nombre}"`)
+
+    agregarPeso.addEventListener("click", function() {
+        console.log("click ok");
+        // montana.peso = 2;
+        this.tiempo+= 0.2;
+    })
+}
+}
+
+//     let agregarPeso = document.getElementById(`"agregarPeso${montana.nombre}"`)
+
+//     agregarPeso.onclick = function() {
+//     montana.peso = 2;
+//     this.tiempo+= 0.2;
+//     console.log(this.tiempo);
+//     console.log(montana.peso);
+//  }
+// }
+
+
+
+
+
 //TABLA DE COMPARACIÓN DE CERROS
 function imprimirTabla(montanas) {
     let contenedor = document.getElementById("tablaComparacion");
@@ -244,6 +283,8 @@ function imprimirTabla(montanas) {
                     <th>Dificultad</th>
                     <th>Altura</th>
                     <th>Desnivel</th>
+                    <th>Estación</th>
+                    <th>Peso</th>
                     <th>Tiempo subida</th>
                     <th>Acción</th>
                 </tr>
@@ -266,8 +307,10 @@ function imprimirTabla(montanas) {
                 <td>${montana.dificultad}</td>
                 <td>${montana.altura}mts</td>
                 <td>${montana.desnivel}mts</td>
+                <td>${montana.estaciones}</td>
+                <td>${montana.peso}kg</td>
                 <td>${montana.tiempo}hs</td>
-                <td><button id="eliminar${montana.nombre}" class="btn btn-secondary">Eliminar</button></td>
+                <td><button id="eliminar${montana.nombre}" class="btn btn-secondary btn-sm">Eliminar</button></td>
       `;
 
         bodyTabla.appendChild(datos);
@@ -278,7 +321,15 @@ function imprimirTabla(montanas) {
 }
 
 
-
-
 //EJECUTO LAS FUNCIONES
 imprimirMontanasHtml(montanas); //imprime las tarjetas de las montañas en el html
+
+
+
+
+
+
+
+//Ej. Suponiendo que tengo elementos html radio button y quiero seleccionar sólo aquel que esté en checked, ésto lo puedo lograr muy fácil con querySelector y la pseudo-clase :checked de CSS.
+
+//let radioChecked = document.querySelector(".radio:checked")
