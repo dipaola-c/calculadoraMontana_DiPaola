@@ -17,7 +17,7 @@ class Montana {
         }
 
         quitarPeso() { 
-            this.peso = this.peso -1;
+            this.peso--;
         }
 
         modificaSegunPeso () {//actualiza el tiempo agregando/quitando 12 minutos cada kg de peso
@@ -37,20 +37,24 @@ class Montana {
         // }
 
         modificaPrimavera() {
-            this.tiempoTotal = this.tiempo + (0.12 * this.peso)
+            this.estaciones = this.estaciones
         }
 
         modificaVerano() {
-            this.tiempoTotal = this.tiempo + (0.12 * this.peso)
+            this.estaciones = this.estaciones + 0.24;
         }
         
         modificaOtono() {
-            this.tiempoTotal = this.tiempo + (0.12 * this.peso)
+            this.estaciones = this.estaciones + 0.34;
         }
 
         modificaInvierno() {
-            this.tiempoTotal = this.tiempo + (0.12 * this.peso)
+            this.estaciones = this.estaciones + 0.45;
         }       
+
+        modificaSegunEstacion() {
+            this.tiempoTotal = this.tiempo + this.estaciones
+        }
 }
 
 
@@ -65,7 +69,7 @@ const montanas = [
         dificultad: "Media",
         altura: 1730,
         desnivel: 800,
-        estaciones: "invierno",
+        estaciones: 0,
         peso: 0,
         tiempo: 5,
         img: "/calculadoraMontana_DiPaola/img/galerias/lagunaNegra.jpg",
@@ -86,7 +90,7 @@ const montanas = [
         dificultad: "Alta",
         altura: 2000,
         desnivel: 1050,
-        estaciones: "",
+        estaciones: 0,
         peso: 0,
         tiempo: 8,
         img: "/calculadoraMontana_DiPaola/img/galerias/cerroCatedral.jpg",
@@ -107,7 +111,7 @@ const montanas = [
         dificultad: "Media",
         altura: 2000,
         desnivel: 1050,
-        estaciones: "",
+        estaciones: 0,
         peso: 0,
         tiempo: 8,
         img: "/calculadoraMontana_DiPaola/img/galerias/cerroTronador.jpeg",
@@ -128,7 +132,7 @@ const montanas = [
         dificultad: "Media",
         altura: 1600,
         desnivel: 850,
-        estaciones: "",
+        estaciones: 0,
         peso: 0,
         tiempo: 7.5,
         img: "/calculadoraMontana_DiPaola/img/galerias/lagunaJakob.jpeg",
@@ -150,7 +154,7 @@ const montanas = [
         altura: 1700,
         desnivel: 950,
         tiempo: 6.5,
-        estaciones: "",
+        estaciones: 0,
         peso: 0,
         img: "/calculadoraMontana_DiPaola/img/galerias/cerroPiltriquitron.jpg",
         elemento1: "Mochila cómoda con varillas interiores",
@@ -208,16 +212,16 @@ function imprimirMontanasHtml(array){
 
         <div class="btn-group btn-group-toggle" data-toggle="buttons" style="padding: 2px">
             <label class="btn btn-secondary">
-            <input type="radio" name="options" id="otono" autocomplete="off" checked> Otoño
+            <input type="radio" name="options" id="otono${montana.nombre}${montana.id}" autocomplete="off" checked> Otoño
             </label>
             <label class="btn btn-secondary">
-            <input type="radio" name="options" id="invierno" autocomplete="off"> Invierno
+            <input type="radio" name="options" id="invierno${montana.nombre}${montana.id}" autocomplete="off"> Invierno
             </label>
             <label class="btn btn-secondary">
-            <input type="radio" name="options" id="primavera" autocomplete="off"> Primavera
+            <input type="radio" name="options" id="primavera${montana.nombre}${montana.id}" autocomplete="off"> Primavera
             </label>
             <label class="btn btn-secondary">
-            <input type="radio" name="options" id="verano" autocomplete="off"> Verano
+            <input type="radio" name="options" id="verano${montana.nombre}${montana.id}" autocomplete="off"> Verano
             </label>
         </div>
 
@@ -235,12 +239,83 @@ function imprimirMontanasHtml(array){
 
     let botonMenosPeso = document.getElementById(`quitarPeso${montana.nombre}${montana.id}`);
     botonMenosPeso.addEventListener("click", () => eliminarDeLaTabla(montana.id));
+    
+    let botonOtono = document.getElementById(`otono${montana.nombre}${montana.id}`);
+    botonOtono.addEventListener("click", () => modificaSegunOtono(montana.id));
+
+    let botonVerano = document.getElementById(`verano${montana.nombre}${montana.id}`);
+    botonVerano.addEventListener("click", () => modificaSegunVerano(montana.id));
+
+    let botonPrimavera = document.getElementById(`primavera${montana.nombre}${montana.id}`);
+    botonPrimavera.addEventListener("click", () => modificaSegunPrimavera(montana.id));
+
+    let botonInvierno = document.getElementById(`invierno${montana.nombre}${montana.id}`);
+    botonInvierno.addEventListener("click", () => modificaSegunInvierno(montana.id));
 
     // let boton = document.getElementById(`comparar${montana.nombre}${montana.id}`);
     // boton.addEventListener("click", () => imprimirTabla(comparar));
 }
 }
 
+
+function modificaSegunInvierno(id) {
+    let index = comparar.findIndex((element) => element.id === id);
+
+    if (comparar[index].peso > 0) {
+        comparar[index].modificaInvierno();
+        comparar[index].modificaSegunEstacion();
+    } else {
+        comparar.splice(index, 1);
+    }
+
+    localStorage.setItem("montanasEnStorage", JSON.stringify(comparar));
+    imprimirTabla(comparar);
+}
+
+
+function modificaSegunPrimavera(id) {
+    let index = comparar.findIndex((element) => element.id === id);
+
+    if (comparar[index].peso > 0) {
+        comparar[index].modificaPrimavera();
+        comparar[index].modificaSegunEstacion();
+    } else {
+        comparar.splice(index, 1);
+    }
+
+    localStorage.setItem("montanasEnStorage", JSON.stringify(comparar));
+    imprimirTabla(comparar);
+}
+
+
+function modificaSegunVerano(id) {
+    let index = comparar.findIndex((element) => element.id === id);
+
+    if (comparar[index].peso > 0) {
+        comparar[index].modificaVerano();
+        comparar[index].modificaSegunEstacion();
+    } else {
+        comparar.splice(index, 1);
+    }
+
+    localStorage.setItem("montanasEnStorage", JSON.stringify(comparar));
+    imprimirTabla(comparar);
+}
+
+
+function modificaSegunOtono(id) {
+    let index = comparar.findIndex((element) => element.id === id);
+
+    if (comparar[index].peso > 0) {
+        comparar[index].modificaOtono();
+        comparar[index].modificaSegunEstacion();
+    } else {
+        comparar.splice(index, 1);
+    }
+
+    localStorage.setItem("montanasEnStorage", JSON.stringify(comparar));
+    imprimirTabla(comparar);
+}
 
 function agregarLaTabla(objeto) {
     let index = comparar.findIndex((elemento) => elemento.id === objeto.id);
@@ -254,12 +329,10 @@ function agregarLaTabla(objeto) {
         montana.peso = 1;
         comparar.push(montana);
     }
-
     //actualización del storage
     localStorage.setItem("montanasEnStorage", JSON.stringify(comparar));
     imprimirTabla(comparar);
 }
-
 
 
 function eliminarDeLaTabla(id) {
@@ -294,7 +367,6 @@ function imprimirTabla(montanas) {
                     <th>Dificultad</th>
                     <th>Altura</th>
                     <th>Desnivel</th>
-                    <th>Estación</th>
                     <th>Peso</th>
                     <th>Tiempo subida</th>
                     <th>Acción</th>
@@ -318,7 +390,6 @@ function imprimirTabla(montanas) {
                 <td>${montana.dificultad}</td>
                 <td>${montana.altura}mts</td>
                 <td>${montana.desnivel}mts</td>
-                <td>${montana.estaciones}</td>
                 <td>${montana.peso}kg</td>
                 <td>${montana.tiempoTotal}hs</td>
                 <td><button id="eliminar${montana.nombre}" class="btn btn-secondary btn-sm">Eliminar</button></td>
