@@ -1,107 +1,303 @@
+//CONSTRUCTOR DE MONTAÑAS
 class Montana {
     constructor (montana) {
+        this.id = montana.id;
         this.nombre = montana.nombre;
         this.dificultad = montana.dificultad; 
         this.altura = montana.altura;
         this.desnivel = montana.desnivel;
         this.estaciones = montana.estaciones;
+        this.peso = montana.peso;
         this.tiempo = montana.tiempo;
+        this.tiempoTotal = montana.tiempo;
+        }
+        
+        agregarPeso() {
+            this.peso++;
         }
 
-        agregarMontana() {
-            this.nombre==this.nombre;
+        quitarPeso() { 
+            this.peso = this.peso -1;
         }
 
-        quitarMontana() {
-            this.nombre==this.nombre;
+        modificaSegunPeso () {//actualiza el tiempo agregando/quitando 12 minutos cada kg de peso
+            this.tiempoTotal = this.tiempo + (0.12 * this.peso)
         }
 
-        modificaSegunEstacion() {
-        let estaciones = prompt("Ingrese la estación del año a viajar:").toLowerCase();
-
-		if(estaciones === "primavera"){
-			this.tiempo += 5;
-		} else if(estaciones === "verano") {
-			this.tiempo += 0;
-		} else if(estaciones === "otono") {
-			this.tiempo += 25;
-		} else if(estaciones === "invierno") {
-			this.tiempo += 50;
-    }
-  }
-
-        // modificaSegunPesoMochila() {
-        //     this.tiempo = this.tiempo + (this.tiempo * (pesoMochila / 100));            
+        // modificaSegunEstacion() {
+		// if(estaciones === "primavera"){
+		// 	this.tiempoTotal += 0;
+		// } else if(estaciones === "verano") {
+		// 	this.tiempoTotal += 0.12;
+		// } else if(estaciones === "otono") {
+		// 	this.tiempoTotal += 0.9;
+		// } else if(estaciones === "invierno") {
+		// 	this.tiempoTotal += 2;
+        // }
         // }
 
-        // quitarPeso() {
-        //     this.tiempo = this.tiempo - (this.tiempo * (pesoMochila / 100));
-        // }
- }
+        modificaPrimavera() {
+            this.tiempoTotal = this.tiempo + (0.12 * this.peso)
+        }
 
+        modificaVerano() {
+            this.tiempoTotal = this.tiempo + (0.12 * this.peso)
+        }
+        
+        modificaOtono() {
+            this.tiempoTotal = this.tiempo + (0.12 * this.peso)
+        }
 
- //Funciones del html
- function imprimirMontanasHTML(array) {
-    let contenedor = document.getElementById("contenedor");
-    contenedor.innerHTML = "";
-
-    for (const montana of array) {
-        let card = document.createElement("div");
-       
-        //contenido de card
-        card.innerHTML = `
-
-        <div class="montanaCuadro" style="width: 20rem;">
-        <div class="montanaBody">
-            <img src="${montana.img}" class="montanaImg" alt="">
-            <h3>${montana.nombre}</h2>
-            <h5>${montana.dificultad}</h5>
-            <p>$${montana.tiempo}</p>
-
-            <div class="btn-comparar">
-                <button id="comparar${montana.nombre}${montana.nombre}" type="button" class="btn btn-dark"> Comparar </button>
-            </div>
-        </div>
-    </div>      ` ;
-
-
-        contenedor.appendChild(card);
-
-        let boton = document.getElementById(`comparar${montana.nombre}${montana.dificultad}`);
-        boton.addEventListener("click", () => compararMontanasIngresadas(montana));
-    }
+        modificaInvierno() {
+            this.tiempoTotal = this.tiempo + (0.12 * this.peso)
+        }       
 }
 
 
 
 
 
+//ARRAY DE MONTAÑAS
+const montanas = [
+    {
+        id: 0,
+        nombre: "Laguna Negra",
+        dificultad: "Media",
+        altura: 1730,
+        desnivel: 800,
+        estaciones: "invierno",
+        peso: 0,
+        tiempo: 5,
+        img: "/calculadoraMontana_DiPaola/img/galerias/lagunaNegra.jpg",
+        elemento1: "Mochila cómoda con varillas interiores",
+        elemento2: "Bolsa de dormir o similar + aislante",
+        elemento3: "Carpa de montaña con varillas de aluminio",
+        elemento4: "Traje de baño en verano",
+        elemento5: "Ropa de abrigo para la cumbre",
+        elemento6: "Zapatillas de trekking",
+        elemento7: "Comida para 2 días y 1 noche",
+        elemento8: "2 litros de agua",
+        elemento9: "Protección solar",
+        elemento10: "GPS, radio, mapa y botiquín",
+    },
+    {
+        id: 1,
+        nombre: "Cerro Catedral",
+        dificultad: "Alta",
+        altura: 2000,
+        desnivel: 1050,
+        estaciones: "",
+        peso: 0,
+        tiempo: 8,
+        img: "/calculadoraMontana_DiPaola/img/galerias/cerroCatedral.jpg",
+        elemento1: "Mochila cómoda con varillas interiores",
+        elemento2: "Bolsa de dormir o similar + aislante",
+        elemento3: "Carpa de montaña con varillas de aluminio",
+        elemento4: "Grampones y piqueta",
+        elemento5: "Ropa de abrigo y nieve para la cumbre",
+        elemento6: "Zapatillas de trekking",
+        elemento7: "Comida para 2 días y 1 noche",
+        elemento8: "2 litros de agua",
+        elemento9: "Protección solar",
+        elemento10: "GPS, radio, mapa y botiquín",
+    },
+    {
+        id: 2,
+        nombre: "Cerro Tronador",
+        dificultad: "Media",
+        altura: 2000,
+        desnivel: 1050,
+        estaciones: "",
+        peso: 0,
+        tiempo: 8,
+        img: "/calculadoraMontana_DiPaola/img/galerias/cerroTronador.jpeg",
+        elemento1: "Mochila cómoda con varillas interiores",
+        elemento2: "Bolsa de dormir o similar + aislante",
+        elemento3: "Carpa de montaña con varillas de aluminio",
+        elemento4: "Sogas (por el terreno de este cerro no pueden clavarse estacas)",
+        elemento5: "Ropa de abrigo y nieve para la cumbre",
+        elemento6: "Zapatillas de trekking",
+        elemento7: "Comida para 2 días y 1 noche",
+        elemento8: "1 litro de agua (hay agua en todo el recorrido)",
+        elemento9: "Protección solar",
+        elemento10: "GPS, radio, mapa y botiquín",
+    },
+    {
+        id: 3,
+        nombre: "Laguna Jakob",
+        dificultad: "Media",
+        altura: 1600,
+        desnivel: 850,
+        estaciones: "",
+        peso: 0,
+        tiempo: 7.5,
+        img: "/calculadoraMontana_DiPaola/img/galerias/lagunaJakob.jpeg",
+        elemento1: "Mochila cómoda con varillas interiores",
+        elemento2: "Bolsa de dormir o similar + aislante",
+        elemento3: "Carpa de montaña con varillas de aluminio",
+        elemento4: "Sogas aptas para colgarse en piedras",
+        elemento5: "Ropa de abrigo y nieve para la cumbre",
+        elemento6: "2 pares de zapatillas de trekking",
+        elemento7: "Comida para 3 días y 2 noches",
+        elemento8: "1 litro de agua (hay agua en todo el recorrido)",
+        elemento9: "Protección solar",
+        elemento10: "GPS, radio, mapa y botiquín",
+    },
+    {
+        id: 4,
+        nombre: "Cerro Piltriquitron",
+        dificultad: "Media",
+        altura: 1700,
+        desnivel: 950,
+        tiempo: 6.5,
+        estaciones: "",
+        peso: 0,
+        img: "/calculadoraMontana_DiPaola/img/galerias/cerroPiltriquitron.jpg",
+        elemento1: "Mochila cómoda con varillas interiores",
+        elemento2: "Bolsa de dormir o similar + aislante",
+        elemento3: "Carpa de montaña con varillas de aluminio",
+        elemento4: "Cubretecho extra para la carpa (zona muy lluviosa)",
+        elemento5: "Ropa de abrigo y nieve para la cumbre",
+        elemento6: "Zapatillas de trekking",
+        elemento7: "Comida para 2 días y 1 noche",
+        elemento8: "2 litros de agua",
+        elemento9: "Protección solar",
+        elemento10: "GPS, radio, mapa y botiquín",
+    },
+];
 
 
 
 
 
+//IMPRIMO OPCIONES DE CERROS EN EL HTML EN EL CONTENEDOR
+function imprimirMontanasHtml(array){
+    let contenedor = document.getElementById("contenedor");
+    contenedor.innerHTML = "";
+
+    //CREO UNA TARJETA POR CADA CERRO DEL ARRAY
+    for (const montana of array) {
+        let tarjeta = document.createElement("div");
+
+    tarjeta.innerHTML = `
+
+    <div class="montanaCuadro">
+    <div class="montanaBody">
+        <img src="${montana.img}" class="montanaImg" alt="">
+        <figcaption>
+        <li>${montana.elemento1}</li>
+        <li>${montana.elemento2}</li>
+        <li>${montana.elemento3}</li>
+        <li>${montana.elemento4}</li>
+        <li>${montana.elemento5}</li>
+        <li>${montana.elemento6}</li>
+        <li>${montana.elemento7}</li>
+        <li>${montana.elemento8}</li>
+        <li>${montana.elemento9}</li>
+        <li>${montana.elemento10}</li></figcaption>
+        <h3>${montana.nombre}</h2>
+        <h5>Dificultad ${montana.dificultad}</h5>
+        <h6>${montana.altura}mts de altura</h6>
+        <h6>${montana.desnivel}mts de desnivel</h6>
+        <p>${montana.tiempo}hs de subida</p>
+
+        <div style="display: flex" style="padding: 2px">
+            <button id="agregarPeso${montana.nombre}${montana.id}" type="button" class="btn btn-secondary btn-sm" style="margin: 2px"> Agregar 1kg de peso </button>
+            <button id="quitarPeso${montana.nombre}${montana.id}" type="button" class="btn btn-secondary btn-sm" style="margin: 2px"> Quitar 1kg de peso </button>
+        </div>
+
+        <div class="btn-group btn-group-toggle" data-toggle="buttons" style="padding: 2px">
+            <label class="btn btn-secondary">
+            <input type="radio" name="options" id="otono" autocomplete="off" checked> Otoño
+            </label>
+            <label class="btn btn-secondary">
+            <input type="radio" name="options" id="invierno" autocomplete="off"> Invierno
+            </label>
+            <label class="btn btn-secondary">
+            <input type="radio" name="options" id="primavera" autocomplete="off"> Primavera
+            </label>
+            <label class="btn btn-secondary">
+            <input type="radio" name="options" id="verano" autocomplete="off"> Verano
+            </label>
+        </div>
+
+        <!-- <div class="btn-comparar">
+            <button id="comparar${montana.nombre}${montana.id}" type="button" class="btn btn-success"> Comparar </button>
+        </div> -->
+
+    </div>
+</div>      `;
+    contenedor.appendChild(tarjeta);  //agrego las tarjetas al final del div contenedor
+
+
+    let botonPeso = document.getElementById(`agregarPeso${montana.nombre}${montana.id}`);
+    botonPeso.addEventListener("click", () => agregarLaTabla(montana));
+
+    let botonMenosPeso = document.getElementById(`quitarPeso${montana.nombre}${montana.id}`);
+    botonMenosPeso.addEventListener("click", () => eliminarDeLaTabla(montana.id));
+
+    // let boton = document.getElementById(`comparar${montana.nombre}${montana.id}`);
+    // boton.addEventListener("click", () => imprimirTabla(comparar));
+}
+}
+
+
+function agregarLaTabla(objeto) {
+    let index = comparar.findIndex((elemento) => elemento.id === objeto.id);
+    console.log({ index });
+
+    if (index != -1) {
+        comparar[index].agregarPeso(); //método de la clase
+        comparar[index].modificaSegunPeso(); //método de la clase
+    } else{
+        let montana = new Montana(objeto);
+        montana.peso = 1;
+        comparar.push(montana);
+    }
+
+    //actualización del storage
+    localStorage.setItem("montanasEnStorage", JSON.stringify(comparar));
+    imprimirTabla(comparar);
+}
+
+
+
+function eliminarDeLaTabla(id) {
+    let index = comparar.findIndex((element) => element.id === id);
+
+    if (comparar[index].peso > 1) {
+        comparar[index].quitarPeso();
+        comparar[index].modificaSegunPeso();
+    } else {
+        comparar.splice(index, 1);
+    }
+
+    localStorage.setItem("montanasEnStorage", JSON.stringify(comparar));
+    imprimirTabla(comparar);
+}
 
 
 
 
-
-
-
-function imprimirTabla(array) {
-    let contenedor = document.getElementById("comparacion-montanas");
+//TABLA DE COMPARACIÓN DE CERROS
+function imprimirTabla(montanas) {
+    let contenedor = document.getElementById("tablaComparacion");
     contenedor.innerHTML = "";
 
     let tabla = document.createElement("div");
 
     tabla.innerHTML = `
-        <table id="comparadorMontanas">
+        <table id="tablaComparacion" style= "width: 100%">
             <thead>         
                 <tr>
-                    <th>Montana</th>
+                    <th>Nombre</th>
                     <th>Dificultad</th>
-                    <th>Tiempo</th>
+                    <th>Altura</th>
+                    <th>Desnivel</th>
+                    <th>Estación</th>
                     <th>Peso</th>
+                    <th>Tiempo subida</th>
+                    <th>Acción</th>
                 </tr>
             </thead>
 
@@ -113,81 +309,52 @@ function imprimirTabla(array) {
 
     contenedor.appendChild(tabla);
 
-
     let bodyTabla = document.getElementById("bodyTabla");
 
-    for (let montana of array) {
+    for (let montana of montanas) {
         let datos = document.createElement("tr");
-        montana.innerHTML = `
+        datos.innerHTML = `
                 <td>${montana.nombre}</td>
                 <td>${montana.dificultad}</td>
-                <td>$${alfajor.precioTotal}</td>
-                <td><button id="eliminar${alfajor.id}" class="btn btn-dark">Eliminar</button></td>
+                <td>${montana.altura}mts</td>
+                <td>${montana.desnivel}mts</td>
+                <td>${montana.estaciones}</td>
+                <td>${montana.peso}kg</td>
+                <td>${montana.tiempoTotal}hs</td>
+                <td><button id="eliminar${montana.nombre}" class="btn btn-secondary btn-sm">Eliminar</button></td>
       `;
 
         bodyTabla.appendChild(datos);
+
+        let botonEliminar = document.getElementById(`eliminar${montana.nombre}`);
+        botonEliminar.addEventListener("click", () => eliminarDeLaTabla(montana.id));
+    }
+}
+
+function chequearMontanasEnStorage() {
+    let contenidoEnStorage = JSON.parse(localStorage.getItem("montanasEnStorage"));
+
+    if (contenidoEnStorage) {
+       
+        let array = [];
+
+        for (const objeto of contenidoEnStorage) {
+           
+            let montana = new Montana(objeto);
+            montana.modificaSegunPeso();
+
+            array.push(montana);
+        }
+
+        imprimirTabla(array);
+        return array;
     }
 
-    // let precioTotal = obtenerPrecioTotal(array);
-    // let accionesCarrito = document.getElementById("acciones-carrito");
-    // accionesCarrito.innerHTML = `
-	// 	<h5>PrecioTotal: $${precioTotal}</h5></br>
-	// 	<button id="vaciarCarrito" onclick="eliminarCarrito()" class="btn btn-dark">Vaciar Carrito</button>
-	// `;
+    return [];
 }
 
 
 
-const montanas = [
-    {
-        nombre: "Laguna Negra",
-        dificultad: "Media",
-        altura: 1730,
-        desnivel: 800,
-        estaciones: 0,
-        tiempo: 5,
-        img: "calculadoraMontana_DiPaola/img/galeria/lagunaNegra.jpg",
-    },
-    {
-        nombre: "Cerro Catedral",
-        dificultad: "Alta",
-        altura: 2000,
-        desnivel: 1050,
-        estaciones: 0,
-        tiempo: 8,
-        img: "calculadoraMontana_DiPaola/img/galeria/cerroCatedral.jpg",
-    },
-    {
-        nombre: "Cerro Tronador",
-        dificultad: "Media",
-        altura: 2000,
-        desnivel: 1050,
-        estaciones: 0,
-        tiempo: 8,
-        img: "calculadoraMontana_DiPaola/img/galeria/cerroTronador.jpg",
-    },
-    {
-        nombre: "Laguna Jakob",
-        dificultad: "Media",
-        altura: 1600,
-        desnivel: 850,
-        estaciones: 0,
-        tiempo: 7.5,
-        img: "calculadoraMontana_DiPaola/img/galeria/lagunaJakob.jpg",
-    },
-    {
-        nombre: "Cerro Piltriquitron",
-        dificultad: "Media",
-        altura: 1700,
-        desnivel: 950,
-        tiempo: 6.5,
-        estaciones: 0,
-        img: "calculadoraMontana_DiPaola/img/galeria/cerroPiltriquitron.jpg",
-    },
-];
-
-
-imprimirMontanasHTML(montanas);
 
 
 
@@ -195,98 +362,12 @@ imprimirMontanasHTML(montanas);
 
 
 
+//EJECUTO LAS FUNCIONES
+imprimirMontanasHtml(montanas); //imprime las tarjetas de las montañas en el html
+
+let comparar = chequearMontanasEnStorage();
 
 
-// //Modifica el tiempo de tardanza según la estación del año (default: PRIMAVERA/VERANO)
-// function estacionDelAno() {   
-//     lagunaJakob.modificaSegunEstacion();
-// }
+//Ej. Suponiendo que tengo elementos html radio button y quiero seleccionar sólo aquel que esté en checked, ésto lo puedo lograr muy fácil con querySelector y la pseudo-clase :checked de CSS.
 
-// //Modifica el tiempo de tardanza según el peso de la mochila (default: 9kg)
-// function pesoMochila() {   
-//     lagunaJakob.modificaSegunPesoMochila();
-// }
-
-
-// //Muestra las montañas ingresadas y sus datos modificados por el usuario      
-// const compararMontanasIngresadas = () => {
-//     let compararMontanas = 'Compará las montañas ingresadas:';
-//     listaDeMontanasIngresadas.forEach((el, index) => {
-//         compararMontanas += `
-//                 ${index + 1}) ${el.nombre} ---> ${el.dificultad}, ${el.altura}m, ${el.desnivel}m, ${el.tiempo}hs en subida
-//                 `;
-//     });
-//     console.log(compararMontanas);
-//     alert(compararMontanas);
-// }         
-
-// //Muestra las opciones de las montañas disponibles
-// const montanasDisponibles = () => {
-//     let menuOpcionesMontanas = `Escribí el número correspondiente según la montaña a seleccionar:`;
-//     Montanas.forEach((el, index) => {
-//         menuOpcionesMontanas += `
-//                 ${index + 1}) ${el.nombre} ---> ${el.dificultad}
-//                 `;
-//     });
-//     let menuOpciones = parseInt(prompt(menuOpcionesMontanas));     
-//     listaDeMontanasIngresadas.push(Montanas[menuOpciones - 1]);      
-//     }; 
-
-
-// //Array de las montañas ingresadas
-// const listaDeMontanasIngresadas = [];
-
-// //Constructor de montañas e instancias
-
-// //Montañas disponibles y datos de las mismas, el default del tiempo es en la estación PRIMAVERA/VERANO con una mochila de 9kg
-// const lagunaNegra = new Montana ("Laguna Negra", "Media", 1730, 800, 5);
-// const cerroCatedral = new Montana ("Cerro Catedral", "Baja", 2405, 1150, 6);
-// const cerroTronador = new Montana ("Cerro Tronador", "Alta", 2000, 1050, 8);
-// const lagunaJakob = new Montana ("Laguna Jakob", "Alta", 1600, 850, 7.30);
-// const refugioFrey = new Montana ("Refugio Frey", "Media", 1700, 890, 4.30);
-
-// const Montanas = [lagunaNegra, cerroCatedral, cerroTronador, lagunaJakob, refugioFrey];
-
-// //Bienvenida general y explicación
-// const bienvenida = `BIENVENIDX A TU CALCULADORA DE MONTAÑA DE BARILOCHE 
-//         Te ofrecemos distintas opciones de cerros según tu ubicación y calcularemos tu tiempo estimado de trekking para que puedas organizar de la mejor forma tu viaje`
-// alert(bienvenida);
-
-// //Menú principal
-// let nombreTurista = prompt ("Ingresá tu nombre");
-// let menuOpciones = prompt ("Hola " + nombreTurista + ` ---> Escribí la letra correspondiente según la opción a seleccionar.: 
-//             A) Cerros disponibles 
-//             B) Ingresar estación del año
-//             C) Ingresar peso de la mochila 
-//             D) Comparar cerros seleccionados
-//             E) SALIR`
-//             );
-
-// while(menuOpciones != 'E') {
-//     switch (menuOpciones) {
-//         case "A":
-//             montanasDisponibles();
-//             break;
-//         case "B":
-//             estacionDelAno();            
-//             break;
-//         case "C":
-//             pesoMochila();
-//             break;
-//         case "D":
-//             compararMontanasIngresadas();
-//                 break;
-//         default:
-//             break;
-//      }
-//      menuOpciones = prompt ("Hola " + nombreTurista + ` ---> Escribí la letra correspondiente según la opción a seleccionar: 
-//                 A) Cerros disponibles 
-//                 B) Ingresar estación del año
-//                 C) Ingresar peso de la mochila 
-//                 D) Comparar cerros seleccionados
-//                 E) SALIR`
-//      );
-//      if (menuOpciones == 'E') {
-//         alert ("Gracias por utilizar nuestra Calculadora de Montaña");
-//      }
-//     }
+//let radioChecked = document.querySelector(".radio:checked")
