@@ -1,7 +1,6 @@
 //CONSTRUCTOR DE MONTAÑAS
 class Montana {
     constructor (montana) {
-        this.id = montana.id;
         this.nombre = montana.nombre;
         this.dificultad = montana.dificultad; 
         this.altura = montana.altura;
@@ -41,7 +40,6 @@ class Montana {
 //ARRAY DE MONTAÑAS
 const montanas = [
     {
-        id: 0,
         nombre: "Laguna Negra",
         dificultad: "Media",
         altura: 1730,
@@ -62,7 +60,6 @@ const montanas = [
         elemento10: "GPS, radio, mapa y botiquín",
     },
     {
-        id: 1,
         nombre: "Cerro Catedral",
         dificultad: "Alta",
         altura: 2000,
@@ -83,7 +80,6 @@ const montanas = [
         elemento10: "GPS, radio, mapa y botiquín",
     },
     {
-        id: 2,
         nombre: "Cerro Tronador",
         dificultad: "Media",
         altura: 2000,
@@ -104,7 +100,6 @@ const montanas = [
         elemento10: "GPS, radio, mapa y botiquín",
     },
     {
-        id: 3,
         nombre: "Laguna Jakob",
         dificultad: "Media",
         altura: 1600,
@@ -125,7 +120,6 @@ const montanas = [
         elemento10: "GPS, radio, mapa y botiquín",
     },
     {
-        id: 4,
         nombre: "Cerro Piltriquitron",
         dificultad: "Media",
         altura: 1700,
@@ -149,15 +143,13 @@ const montanas = [
 
 
 
-
-
 //IMPRIMO OPCIONES DE CERROS EN EL HTML EN EL CONTENEDOR
-function imprimirMontanasHtml(array){
+function imprimirMontanasHtml(montanas){
     let contenedor = document.getElementById("contenedor");
     contenedor.innerHTML = "";
 
     //CREO UNA TARJETA POR CADA CERRO DEL ARRAY
-    for (const montana of array) {
+    for (const montana of montanas) {
         let tarjeta = document.createElement("div");
 
     tarjeta.innerHTML = `
@@ -183,8 +175,8 @@ function imprimirMontanasHtml(array){
         <p>${montana.tiempo}hs de subida</p>
 
         <div style="display: flex" style="padding: 2px">
-            <button id="agregarPeso${montana.nombre}${montana.id}" type="button" class="btn btn-secondary btn-sm" style="margin: 2px"> Agregar 2kg de peso </button>
-            <button id="quitarPeso${montana.nombre}${montana.id}" type="button" class="btn btn-secondary btn-sm" style="margin: 2px"> Quitar 2kg de peso </button>
+            <button id="agregarPeso${montana.nombre}" type="button" class="btn btn-secondary btn-sm" style="margin: 2px"> Agregar 2kg de peso </button>
+            <button id="quitarPeso${montana.nombre}" type="button" class="btn btn-secondary btn-sm" style="margin: 2px"> Quitar 2kg de peso </button>
         </div>
 
         <div class="btn-group btn-group-toggle" data-toggle="buttons" style="padding: 2px">
@@ -203,68 +195,62 @@ function imprimirMontanasHtml(array){
         </div>
 
         <div class="btn-comparar">
-            <button id="comparar${montana.nombre}${montana.id}" type="button" class="btn btn-success"> Comparar </button>
+            <button id="comparar${montana.nombre}" type="button" class="btn btn-success"> Comparar </button>
         </div>
 
     </div>
 </div>      `;
     contenedor.appendChild(tarjeta);  //agrego las tarjetas al final del div contenedor
 
+    let boton = document.getElementById(`comparar${montana.nombre}`);
+    boton.addEventListener("click", () => imprimirTabla(montanas));
+    // boton.addEventListener("click", () =>
+    // comparar());
 
-    let botonPeso = document.getElementById(`agregarPeso${montana.nombre}${montana.id}`);
-    botonPeso.addEventListener("click", () => agregarLaTabla(montana));
-
-    // let boton = document.getElementById(`comparar${montana.nombre}${montana.id}`);
-    // boton.addEventListener("click", () => imprimirTabla(montana));
 }
 }
 
 
-function agregarLaTabla(objeto) {
-    let index = comparar.findIndex((elemento) => elemento.id === objeto.id);
-    console.log({ index });
 
-    if (index != -1) {
-        comparar[index].agregarPeso(); //método de la clase
-        comparar[index].modificaSegunPeso(); //método de la clase
-    } else{
-        let montana = new Montana(objeto);
-        montana.peso = 1;
-        comparar.push(montana);
-    }
 
-    //actualización del storage
-    localStorage.setItem("montanasEnStorage", JSON.stringify(comparar));
-    imprimirTabla(comparar);
-}
+// function agregarPeso(montana) {
+//     let index = comparar.findIndex((elemento) => elemento.id === montana.nombre);
+//     console.log({ index });
 
-function eliminarDeLaTabla(id) {
-    let index = comparar.findIndex((element) => element.id === id);
+//     if (index != -1) {
+//         comparar[index].agregarPeso2kg();
+//         // comparar[index].actualizarTiempo();
+//     } else{
+//         let montana = new Montana(montana);
+//         montana.nombre = montana.nombre;
+//         comparar.push(montana);
+//     }
 
-    if (comparar[index].cantidad > 1) {
-        comparar[index].quitarPeso();
-        comparar[index].modificaSegunPeso();
-    } else {
-        comparar.splice(index, 1);
-    }
-
-    localStorage.setItem("montanasEnStorage", JSON.stringify(comparar));
-    imprimirTabla(comparar);
-}
-
-// function agregarPeso2kg(){
-
-//     for (let montana of montanas) {
-    
-//     let agregarPeso = document.getElementById(`"agregarPeso${montana.nombre}"`)
-
-//     agregarPeso.addEventListener("click", function() {
-//         console.log("click ok");
-//         // montana.peso = 2;
-//         this.tiempo+= 0.2;
-//     })
+//     localStorage.setItem("montanasEnStorage", JSON.stringify(comparar));
+//     imprimirTabla(comparar);
 // }
-//}
+
+
+
+
+
+
+
+
+
+function agregarPeso2kg(){
+
+    for (let montana of montanas) {
+    
+    let agregarPeso = document.getElementById(`"agregarPeso${montana.nombre}"`)
+
+    agregarPeso.addEventListener("click", function() {
+        console.log("click ok");
+        // montana.peso = 2;
+        this.tiempo+= 0.2;
+    })
+}
+}
 
 //     let agregarPeso = document.getElementById(`"agregarPeso${montana.nombre}"`)
 
@@ -327,68 +313,19 @@ function imprimirTabla(montanas) {
 
         bodyTabla.appendChild(datos);
 
-        let botonEliminar = document.getElementById(`eliminar${montana.nombre}`);
-        botonEliminar.addEventListener("click", () => eliminarDeLaTabla(montana.id));
+        // let botonEliminar = document.getElementById(`eliminar${montana.nombre}`);
+        // botonEliminar.addEventListener("click", () => eliminarDelCarrito(alfajor.id));
     }
-
-    // let precioTotal = obtenerPrecioTotal(array);
-    // let accionesCarrito = document.getElementById("acciones-carrito");
-    // accionesCarrito.innerHTML = `
-	// 	<h5>PrecioTotal: $${precioTotal}</h5></br>
-	// 	<button id="vaciarCarrito" onclick="eliminarCarrito()" class="btn btn-dark">Vaciar Carrito</button>
-	// `;
 }
-
-
-function filtrarBusqueda(e) {
-    e.preventDefault();
-
-    // Tomo el value del input y le agrego toLowerCase para que la búsqueda no sea
-    // case sensitive
-    let ingreso = document.getElementById("busqueda").value.toLowerCase();
-    let arrayFiltrado = montanas.filter((elemento) => elemento.marca.toLowerCase().includes(ingreso));
-
-    imprimirMontanasHtml(arrayFiltrado);
-}
-
-function chequearMontanasEnStorage() {
-    let contenidoEnStorage = JSON.parse(localStorage.getItem("montanasEnStorage"));
-
-    if (contenidoEnStorage) {
-       
-        let array = [];
-
-        for (const objeto of contenidoEnStorage) {
-           
-            let montana = new Montana(objeto);
-            montana.modificaSegunPeso();
-            // Envio ese objeto instanciado al arrray
-            array.push(montana);
-        }
-
-        imprimirTabla(array);
-        return array;
-    }
-
-    // Si no existe ese array en el LS, esta función devolverá un array vacío
-    return [];
-}
-
-// ************** EVENTO **************
-// let btnFiltrar = document.getElementById("btnFiltrar");
-// btnFiltrar.addEventListener("click", filtrarBusqueda);
-
-
-
-
-
-
 
 
 //EJECUTO LAS FUNCIONES
 imprimirMontanasHtml(montanas); //imprime las tarjetas de las montañas en el html
 
-let comparar = chequearMontanasEnStorage();
+
+
+
+
 
 
 //Ej. Suponiendo que tengo elementos html radio button y quiero seleccionar sólo aquel que esté en checked, ésto lo puedo lograr muy fácil con querySelector y la pseudo-clase :checked de CSS.
