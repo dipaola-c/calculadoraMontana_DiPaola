@@ -117,28 +117,6 @@ function imprimirMontanasHtml(array){
     let botonMenosPeso = document.getElementById(`quitarPeso${montana.nombre}${montana.id}`);
     botonMenosPeso.addEventListener("click", () => eliminarDeLaTabla(montana.id));
 
-    // const btn = document.getElementById(`comparar${montana.nombre}${montana.id}`);        
-    // const radioButtons = document.querySelectorAll('input[name="options"]');
-    // btn.addEventListener("click", () => {
-    //     let seleccionaEstacion;
-    //     for (const radioButton of radioButtons) {
-    //         if (radioButton.checked) {
-    //             seleccionaEstacion = radioButton.id;
-    //             break;
-    //         }
-    //     }
-
-    //     if(seleccionaEstacion === `primavera${montana.nombre}${montana.id}`){
-    //         modificaSegunPrimavera(montana.id);       
-    //     } else if(seleccionaEstacion === `verano${montana.nombre}${montana.id}`) {
-    //         modificaSegunVerano(montana.id); 		
-    //     } else if(seleccionaEstacion === `otono${montana.nombre}${montana.id}`) {
-    //         modificaSegunOtono(montana.id); 
-	// 	} else if(seleccionaEstacion === `invierno${montana.nombre}${montana.id}`) {
-    //         modificaSegunInvierno(montana.id);         
-    //     }
-    // });
-
     const btn = document.getElementById(`comparar${montana.nombre}${montana.id}`);        
     const radioButtons = document.querySelectorAll('input[name="options"]');
     btn.addEventListener("click", () => {
@@ -160,7 +138,6 @@ function imprimirMontanasHtml(array){
             modificaSegunInvierno(montana.id);         
         }
     });
-
 }
 }
 
@@ -182,7 +159,6 @@ function imprimirTabla(montanas) {
                     <th>Altura</th>
                     <th>Desnivel</th>
                     <th>Peso</th>
-                    <th>Estación</th>
                     <th>Tiempo subida</th>
                     <th>Acción</th>
                 </tr>
@@ -206,7 +182,6 @@ function imprimirTabla(montanas) {
                 <td>${montana.altura}mts</td>
                 <td>${montana.desnivel}mts</td>
                 <td>${montana.peso}kg</td>
-                <td>${montana.estaciones}</td>
                 <td>${montana.tiempoTotalFinal}hs</td>
                 <td><button id="eliminar${montana.nombre}" class="btn btn-secondary btn-sm">Eliminar</button></td>
       `;

@@ -72,10 +72,18 @@
 
     
   /*PAGINA CALCULADORA*/
+
+  #instrucciones {
+    text-align: center;
+    padding: 25px;
+    margin: 25px;
+  }
+
   #contenedor {
     display: flex;
     flex-wrap: wrap;
     margin-left: 5%;
+    justify-content: center;
   }
   .montanaCuadro {
     text-align: center!important;
@@ -121,7 +129,7 @@
       background: rgba(175, 173, 173, 0.9);
       text-align: center;
       padding: 15px;
-      font-size: 13px;
+      font-size: 12.5px;
       color: white;
       height:50%;
     }
@@ -233,7 +241,8 @@
   /* body main { }*/
     body main .presentacion {
       padding: 70px;
-      background-color: rgba(84, 96, 112, 0.788); }
+      background-color: rgba(84, 96, 112, 0.788);
+      text-align: center; }
       body main .presentacion p {
         text-align: center;
         font-size: 20px;
@@ -328,7 +337,7 @@ h1, h2, h3, p {
 
 
 /*vista mobile*/
-@media only screen and (min-width: 0px) and (max-width: 767px) {
+@media only screen and (min-width: 0px) and (max-width: 867px) {
  .infoUtilPadre{
     display: inline-block;
   }
