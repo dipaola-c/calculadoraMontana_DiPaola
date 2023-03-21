@@ -1,55 +1,5 @@
 import {montanas} from "./arrayMontanas.js"
-
-
-
-//CONSTRUCTOR DE MONTAÑAS
-class Montana {
-    constructor (montana) {
-        this.id = montana.id;
-        this.nombre = montana.nombre;
-        this.dificultad = montana.dificultad; 
-        this.altura = montana.altura;
-        this.desnivel = montana.desnivel;
-        this.estaciones = montana.estaciones;
-        this.peso = montana.peso;
-        this.tiempo = montana.tiempo;
-        this.tiempoTotal = montana.tiempo;
-        this.tiempoTotalFinal = montana.tiempo;
-        }
-        
-        //sobre el peso
-        agregarPeso() {
-            this.peso++;
-        }
-
-        quitarPeso() { 
-            this.peso--;
-        }
-
-        modificaSegunPeso () {//actualiza el tiempo agregando/quitando 12 minutos cada kg de peso
-            this.tiempoTotal = this.tiempo + (0.12 * this.peso)
-        }
-
-        //sobre el clima
-        modificaPrimavera() {
-            this.estaciones = 0;
-        }
-        modificaVerano() {
-            this.estaciones = 0.24;
-        }
-        modificaOtono() {
-            this.estaciones = 0.34;
-        }
-        modificaInvierno() {
-            this.estaciones = 0.45;
-        }       
-        modificaSegunEstacion() {
-            this.tiempoTotalFinal = this.tiempoTotal + this.estaciones;
-        }
-        
-}
-
-
+import Montana from "./constructor.js";
 
 //IMPRIMO OPCIONES DE CERROS EN EL HTML EN EL CONTENEDOR
 function imprimirMontanasHtml(array){
@@ -204,7 +154,6 @@ function modificaSegunInvierno(id) {
     } else {
         comparar.splice(index, 1);
     }
-
     localStorage.setItem("montanasEnStorage", JSON.stringify(comparar));
     imprimirTabla(comparar);
 }
@@ -219,7 +168,6 @@ function modificaSegunPrimavera(id) {
     } else {
         comparar.splice(index, 1);
     }
-
     localStorage.setItem("montanasEnStorage", JSON.stringify(comparar));
     imprimirTabla(comparar);
 }
@@ -234,7 +182,6 @@ function modificaSegunVerano(id) {
     } else {
         comparar.splice(index, 1);
     }
-
     localStorage.setItem("montanasEnStorage", JSON.stringify(comparar));
     imprimirTabla(comparar);
 }
@@ -249,14 +196,13 @@ function modificaSegunOtono(id) {
     } else {
         comparar.splice(index, 1);
     }
-
     localStorage.setItem("montanasEnStorage", JSON.stringify(comparar));
     imprimirTabla(comparar);
 }
 
 
 
-
+//TABLA
 function agregarLaTabla(objeto) {
     let index = comparar.findIndex((elemento) => elemento.id === objeto.id);
     console.log({ index });
@@ -290,19 +236,16 @@ function eliminarDeLaTabla(id) {
 }
 
 
-
+//STORAGE
 function chequearMontanasEnStorage() {
     let contenidoEnStorage = JSON.parse(localStorage.getItem("montanasEnStorage"));
 
     if (contenidoEnStorage) {
-       
         let array = [];
 
         for (const objeto of contenidoEnStorage) {
-           
             let montana = new Montana(objeto);
             montana.modificaSegunPeso();
-
             array.push(montana);
         }
 
