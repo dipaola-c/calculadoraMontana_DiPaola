@@ -9,7 +9,7 @@ export const montanas = [
         estaciones: 0,
         peso: 0,
         tiempo: 5,
-        img: "/../img/galerias/lagunaNegra.jpg",
+        img: "../img/galerias/lagunaNegra.jpg",
         elemento1: "Mochila cómoda con varillas interiores",
         elemento2: "Bolsa de dormir pero es un cerro que podrás realizar en el día",
         elemento3: "Carpa de montaña (opcional)",
