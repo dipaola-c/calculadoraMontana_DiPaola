@@ -1,6 +1,7 @@
 import {montanas} from "./arrayMontanas.js";
 import Montana from "./constructor.js";
 
+
 //IMPRIMO OPCIONES DE CERROS EN EL HTML EN EL CONTENEDOR
 function imprimirMontanasHtml(array){
     let contenedor = document.getElementById("contenedor");
@@ -54,12 +55,11 @@ function imprimirMontanasHtml(array){
 
         <div class="btn-comparar">
             <button id="comparar${montana.nombre}${montana.id}" type="button" class="btn btn-success"> Comparar </button>
+            <button id="lugar${montana.nombre}${montana.id}" type="button" class="btn btn-light"> Ver ubicación </button>
         </div> 
-
     </div>
 </div>      `;
     contenedor.appendChild(tarjeta);  //agrego las tarjetas al final del div contenedor
-
 
     let botonPeso = document.getElementById(`agregarPeso${montana.nombre}${montana.id}`);
     botonPeso.addEventListener("click", () => agregarLaTabla(montana));
@@ -88,6 +88,43 @@ function imprimirMontanasHtml(array){
             modificaSegunInvierno(montana.id);         
         }
     });
+
+    //CONSUMO DE API
+    const buttonLugar = document.getElementById(`lugar${montana.nombre}${montana.id}`);
+
+    const muestraLugares = (el) => {
+        swal({
+            title: el.nombre,
+            text: `Código id: ${el.id}`,
+            icon: "info",
+            buttons: {
+                confirm : {text:'Ok!',className:'btn btn-success'},              
+                }
+          });
+    }
+    
+    buttonLugar.addEventListener("click", async () => {
+      const data = await fetch("https://apis.datos.gob.ar/georef/api/municipios?provincia=62&campos=id,nombre&max=100");
+      const res = await data.json();
+
+    if (montana.id == 0){
+        console.log (res.municipios[3]);
+        muestraLugares(res.municipios[3]);
+        } else if (montana.id == 1){
+        console.log (res.municipios[5]);
+        muestraLugares(res.municipios[5]);
+        } else if (montana.id == 2){
+        console.log (res.municipios[8]);
+        muestraLugares(res.municipios[9]);
+        } else if (montana.id == 3){
+        console.log (res.municipios[10]);
+        muestraLugares(res.municipios[10]);
+        } else if (montana.id == 4){
+        console.log (res.municipios[23]);
+        muestraLugares(res.municipios[23]);
+        };
+} 
+);
 }
 }
 
