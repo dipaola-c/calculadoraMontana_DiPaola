@@ -32,7 +32,7 @@ function imprimirMontanasHtml(array){
         <h6>${montana.desnivel}mts de desnivel</h6>
         <p>${montana.tiempo}hs de subida</p>
 
-        <div class="btn-group btn-group-toggle" data-toggle="buttons" style="padding: 2px">
+        <div class="btn-group btn-group-toggle" data-toggle="buttons" style="padding: 2px, display:flexbox" >
             <label class="btn btn-secondary">
             <input type="radio" name="options" id="otono${montana.nombre}${montana.id}" autocomplete="off"> Otoño
             </label>
