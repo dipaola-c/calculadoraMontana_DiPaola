@@ -1,4 +1,4 @@
-import {montanas} from "./arrayMontanas.js"
+import {montanas} from "./arrayMontanas.js";
 import Montana from "./constructor.js";
 
 //IMPRIMO OPCIONES DE CERROS EN EL HTML EN EL CONTENEDOR
